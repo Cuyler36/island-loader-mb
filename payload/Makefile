@@ -46,8 +46,9 @@ SHELL := /bin/bash -o pipefail
 C_SUBDIRS := src src/gflib src/libpmagb
 ASM_SUBDIRS := asm asm/gflib asm/libpmagb
 
-ASM_SRCS := $(foreach subdir,$(ASM_SUBDIRS),$(wildcard $(subdir)/*.s))
+ASM_SRCS := $(filter-out asm/all.s,$(foreach subdir,$(ASM_SUBDIRS),$(wildcard $(subdir)/*.s)))
 ASM_OBJS := $(ASM_SRCS:%.s=$(OBJ_DIR)/%.o)
+SDK_OBJ := $(OBJ_DIR)/asm/sdk.o
 C_SRCS := $(foreach subdir,$(C_SUBDIRS),$(wildcard $(subdir)/*.c))
 C_OBJS := $(C_SRCS:%.c=$(OBJ_DIR)/%.o)
 DATA_ASM_SRCS := $(wildcard data/*.s sound/*.s sound/*/*.s)
@@ -69,7 +70,7 @@ LIBS := -L../../../tools/agbcc/lib -lgcc -lc
 
 SUBDIRS := $(ASM_SUBDIRS) $(C_SUBDIRS) data sound sound/songs $(MID_SUBDIR)
 
-ALL_OBJS := $(ASM_OBJS) $(C_OBJS) $(DATA_ASM_OBJS) $(MID_ASM_OBJS)
+ALL_OBJS := $(ASM_OBJS) $(SDK_OBJ) $(C_OBJS) $(DATA_ASM_OBJS) $(MID_ASM_OBJS)
 
 TOOLDIRS := $(filter-out ../tools/agbcc ../tools/binutils,$(wildcard ../tools/*))
 
@@ -129,6 +130,9 @@ endif
 
 $(ASM_OBJS): $(OBJ_DIR)/%.o: %.s $$(asm_dep)
 	$(AS) $(ASFLAGS) -o $@ $<
+
+$(SDK_OBJ): asm/all.s
+	$(AS) $(ASFLAGS) --defsym SDK_ONLY=1 -o $@ $<
 
 $(C_OBJS): $(OBJ_DIR)/%.o: %.c $$(c_dep)
 	@echo "CC <flags> -o $@ $<"

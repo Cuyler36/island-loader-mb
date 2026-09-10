@@ -1,0 +1,229 @@
+{
+  "min_version": "3.7.1",
+  "custom_make": "C:/Users/olsen/AppData/Local/Programs/Python/Python313/Scripts/ninja.exe",
+  "build_base": true,
+  "build_target": true,
+  "watch_patterns": [
+    "*.c",
+    "*.h",
+    "*.s",
+    "*.inc",
+    "*.py",
+    "*.bin",
+    "*.txt",
+    "*.json"
+  ],
+  "ignore_patterns": [
+    "build/**/*",
+    "payload/build/**/*"
+  ],
+  "units": [
+    {
+      "name": "payload/main",
+      "target_path": "payload/build/objdiff/main.target.o",
+      "base_path": "payload/build/payload/src/main.o",
+      "scratch": {
+        "platform": "gba",
+        "compiler": "agbcc",
+        "c_flags": "-O2 -g -mthumb-interwork -fhex-asm -Wimplicit -Werror -ffix-debug-line",
+        "ctx_path": "payload/build/payload/src/main.i",
+        "build_ctx": false
+      },
+      "metadata": {
+        "complete": false,
+        "source_path": "payload/src/main.c",
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "payload/interrupt",
+      "target_path": "payload/build/objdiff/interrupt.target.o",
+      "base_path": "payload/build/payload/src/interrupt.o",
+      "scratch": {
+        "platform": "gba",
+        "compiler": "agbcc",
+        "c_flags": "-O2 -g -mthumb-interwork -fhex-asm -Wimplicit -Werror -ffix-debug-line",
+        "ctx_path": "payload/build/payload/src/interrupt.i",
+        "build_ctx": false
+      },
+      "metadata": {
+        "complete": false,
+        "source_path": "payload/src/interrupt.c",
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "payload/m_msg",
+      "target_path": "payload/build/objdiff/m_msg.target.o",
+      "base_path": "payload/build/payload/src/m_msg.o",
+      "scratch": {
+        "platform": "gba",
+        "compiler": "agbcc",
+        "c_flags": "-O2 -g -mthumb-interwork -fhex-asm -Wimplicit -Werror -ffix-debug-line",
+        "ctx_path": "payload/build/payload/src/m_msg.i",
+        "build_ctx": false
+      },
+      "metadata": {
+        "complete": false,
+        "source_path": "payload/src/m_msg.c",
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "payload/init",
+      "target_path": "payload/build/objdiff/init.target.o",
+      "base_path": "payload/build/payload/src/init.o",
+      "scratch": {
+        "platform": "gba",
+        "compiler": "agbcc",
+        "c_flags": "-O2 -g -mthumb-interwork -fhex-asm -Wimplicit -Werror -ffix-debug-line",
+        "ctx_path": "payload/build/payload/src/init.i",
+        "build_ctx": false
+      },
+      "metadata": {
+        "complete": false,
+        "source_path": "payload/src/init.c",
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "payload/m_font_draw",
+      "target_path": "payload/build/objdiff/m_font_draw.target.o",
+      "base_path": "payload/build/payload/src/m_font_draw.o",
+      "scratch": {
+        "platform": "gba",
+        "compiler": "agbcc",
+        "c_flags": "-O2 -g -mthumb-interwork -fhex-asm -Wimplicit -Werror -ffix-debug-line",
+        "ctx_path": "payload/build/payload/src/m_font_draw.i",
+        "build_ctx": false
+      },
+      "metadata": {
+        "complete": false,
+        "source_path": "payload/src/m_font_draw.c",
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "payload/lib",
+      "target_path": "payload/build/objdiff/lib.target.o",
+      "base_path": "payload/build/payload/src/lib.o",
+      "scratch": {
+        "platform": "gba",
+        "compiler": "agbcc",
+        "c_flags": "-O2 -g -mthumb-interwork -fhex-asm -Wimplicit -Werror -ffix-debug-line",
+        "ctx_path": "payload/build/payload/src/lib.i",
+        "build_ctx": false
+      },
+      "metadata": {
+        "complete": false,
+        "source_path": "payload/src/lib.c",
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "payload/audio",
+      "target_path": "payload/build/objdiff/audio.target.o",
+      "base_path": "payload/build/payload/src/audio.o",
+      "scratch": {
+        "platform": "gba",
+        "compiler": "agbcc",
+        "c_flags": "-O2 -g -mthumb-interwork -fhex-asm -Wimplicit -Werror -ffix-debug-line",
+        "ctx_path": "payload/build/payload/src/audio.i",
+        "build_ctx": false
+      },
+      "metadata": {
+        "complete": false,
+        "source_path": "payload/src/audio.c",
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "payload/m_msg_util",
+      "target_path": "payload/build/objdiff/m_msg_util.target.o",
+      "base_path": "payload/build/payload/src/m_msg_util.o",
+      "scratch": {
+        "platform": "gba",
+        "compiler": "agbcc",
+        "c_flags": "-O2 -g -mthumb-interwork -fhex-asm -Wimplicit -Werror -ffix-debug-line",
+        "ctx_path": "payload/build/payload/src/m_msg_util.i",
+        "build_ctx": false
+      },
+      "metadata": {
+        "complete": false,
+        "source_path": "payload/src/m_msg_util.c",
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "payload/game",
+      "target_path": "payload/build/objdiff/game.target.o",
+      "base_path": "payload/build/payload/src/game.o",
+      "scratch": {
+        "platform": "gba",
+        "compiler": "agbcc",
+        "c_flags": "-O2 -g -mthumb-interwork -fhex-asm -Wimplicit -Werror -ffix-debug-line",
+        "ctx_path": "payload/build/payload/src/game.i",
+        "build_ctx": false
+      },
+      "metadata": {
+        "complete": false,
+        "source_path": "payload/src/game.c",
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "payload/joyboot",
+      "target_path": "payload/build/objdiff/joyboot.target.o",
+      "base_path": "payload/build/payload/src/joyboot.o",
+      "scratch": {
+        "platform": "gba",
+        "compiler": "agbcc",
+        "c_flags": "-O2 -g -mthumb-interwork -fhex-asm -Wimplicit -Werror -ffix-debug-line",
+        "ctx_path": "payload/build/payload/src/joyboot.i",
+        "build_ctx": false
+      },
+      "metadata": {
+        "complete": false,
+        "source_path": "payload/src/joyboot.c",
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "payload/m_msg_sprite",
+      "target_path": "payload/build/objdiff/m_msg_sprite.target.o",
+      "base_path": "payload/build/payload/src/m_msg_sprite.o",
+      "scratch": {
+        "platform": "gba",
+        "compiler": "agbcc",
+        "c_flags": "-O2 -g -mthumb-interwork -fhex-asm -Wimplicit -Werror -ffix-debug-line",
+        "ctx_path": "payload/build/payload/src/m_msg_sprite.i",
+        "build_ctx": false
+      },
+      "metadata": {
+        "complete": false,
+        "source_path": "payload/src/m_msg_sprite.c",
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "payload/sdk",
+      "target_path": "payload/build/objdiff/sdk.target.o",
+      "base_path": "payload/build/payload/asm/sdk.o",
+      "metadata": {
+        "complete": true,
+        "source_path": "payload/asm/all.s",
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "payload/data",
+      "target_path": "payload/build/objdiff/data.target.o",
+      "base_path": "payload/build/payload/data/data.o",
+      "metadata": {
+        "complete": true,
+        "source_path": "payload/data/data.s",
+        "auto_generated": false
+      }
+    }
+  ]
+}

@@ -4,6 +4,10 @@
 *.elf
 *.sav
 build/
+/build.ninja
+/.ninja_deps
+/.ninja_log
+__pycache__/
 payload/build
 tools/agbcc
 tools/binutils
@@ -12,3 +16,5 @@ tools/binutils
 *.dump
 .idea
 payload/payload.bin
+/assets/*
+!/assets/.gitkeep

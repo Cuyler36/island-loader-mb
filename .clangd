@@ -1,0 +1,7 @@
+CompileFlags:
+  Add:
+    - -I../include
+    - -target
+    - arm-none-eabi
+    - -mcpu=arm7tdmi
+    - -D__INTELLISENSE__

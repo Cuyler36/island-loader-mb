@@ -2,6 +2,9 @@
 	.include "../constants/gba_constants.inc"
 	.text
 	.syntax unified
+	@ SDK_ONLY is used to assemble the shared compiler/runtime tail without
+	@ duplicating the reconstructed C functions in the final link.
+	.ifndef SDK_ONLY
 
 	thumb_func_start AgbMain
 AgbMain: @ 0x0201820C
@@ -3228,6 +3231,8 @@ sub_02019A50: @ 0x02019A50
 	pop {r0}
 	bx r0
 
+	.endif
+
 	thumb_func_start sub_02019A64
 sub_02019A64: @ 0x02019A64
 	svc #0xc
@@ -3460,5 +3465,49 @@ _02019B8A:
 	bne _02019B86
 	adds r0, r5, #0
 	pop {r4, r5, pc}
+
+	@ Public names used by the reconstructed C sources.
+	.global CpuFastSet
+	.thumb_set CpuFastSet, sub_02019A64
+	.global CpuSet
+	.thumb_set CpuSet, sub_02019A68
+	.global RegisterRamReset
+	.thumb_set RegisterRamReset, sub_02019A6C
+	.global _call_via_r0
+	.thumb_set _call_via_r0, sub_02019A70
+	.global _call_via_r1
+	.thumb_set _call_via_r1, sub_02019A74
+	.global _call_via_r2
+	.thumb_set _call_via_r2, sub_02019A78
+	.global _call_via_r3
+	.thumb_set _call_via_r3, sub_02019A7C
+	.global _call_via_r4
+	.thumb_set _call_via_r4, sub_02019A80
+	.global _call_via_r5
+	.thumb_set _call_via_r5, sub_02019A84
+	.global _call_via_r6
+	.thumb_set _call_via_r6, sub_02019A88
+	.global _call_via_r7
+	.thumb_set _call_via_r7, sub_02019A8C
+	.global _call_via_r8
+	.thumb_set _call_via_r8, sub_02019A90
+	.global _call_via_r9
+	.thumb_set _call_via_r9, sub_02019A94
+	.global _call_via_sl
+	.thumb_set _call_via_sl, sub_02019A98
+	.global _call_via_fp
+	.thumb_set _call_via_fp, sub_02019A9C
+	.global _call_via_ip
+	.thumb_set _call_via_ip, sub_02019AA0
+	.global _call_via_sp
+	.thumb_set _call_via_sp, sub_02019AA4
+	.global _call_via_lr
+	.thumb_set _call_via_lr, sub_02019AA8
+	.global __divsi3
+	.thumb_set __divsi3, sub_02019AAC
+	.global __div0
+	.thumb_set __div0, sub_02019B40
+	.global memset
+	.thumb_set memset, sub_02019B44
 
 .align 2, 0

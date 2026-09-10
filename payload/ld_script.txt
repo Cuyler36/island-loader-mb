@@ -1,7 +1,119 @@
-gGlobalStructure = 0x03000010;
-gIntrTable = 0x03000890;
+/* Fixed EWRAM objects. */
+/* Contiguous 16-color palette banks; span aliases allocate no extra storage. */
+/* Original address: 0x02038000 */
+gBgPaletteBuffer = 0x02038000;
+/* Original address: 0x02038200 */
+gObjPaletteBuffer = 0x02038200;
+/* Original address: 0x02038000 */
+gBgObjPaletteBuffer = 0x02038000;
 
-/* TODO deal with these proper */
+/* Original address: 0x02038000 */
+gBgPaletteBank0 = 0x02038000;
+
+/* Original address: 0x02038020 */
+gBgPaletteBank1 = 0x02038020;
+
+/* Original address: 0x02038040 */
+gBgPaletteBank2 = 0x02038040;
+
+/* Original address: 0x02038060 */
+gBgPaletteBank3 = 0x02038060;
+
+/* Original address: 0x02038080 */
+gBgPaletteBank4 = 0x02038080;
+
+/* Original address: 0x020380A0 */
+gBgPaletteBank5 = 0x020380A0;
+
+/* Original address: 0x020380C0 */
+gBgPaletteBank6 = 0x020380C0;
+
+/* Original address: 0x020380E0 */
+gBgPaletteBank7 = 0x020380E0;
+
+/* Original address: 0x02038100 */
+gBgPaletteBank8 = 0x02038100;
+
+/* Original address: 0x02038120 */
+gBgPaletteBank9 = 0x02038120;
+
+/* Original address: 0x02038140 */
+gBgPaletteBank10 = 0x02038140;
+
+/* Original address: 0x02038160 */
+gBgPaletteBank11 = 0x02038160;
+
+/* Original address: 0x02038180 */
+gBgPaletteBank12 = 0x02038180;
+
+/* Original address: 0x020381A0 */
+gBgPaletteBank13 = 0x020381A0;
+
+/* Original address: 0x020381C0 */
+gBgPaletteBank14 = 0x020381C0;
+
+/* Original address: 0x020381E0 */
+gBgPaletteBank15 = 0x020381E0;
+
+/* Original address: 0x02038200 */
+gObjPaletteBank0 = 0x02038200;
+
+/* Original address: 0x02038220 */
+gObjPaletteBank1 = 0x02038220;
+
+/* Original address: 0x02038240 */
+gObjPaletteBank2 = 0x02038240;
+
+/* Original address: 0x02038260 */
+gObjPaletteBank3 = 0x02038260;
+
+/* Original address: 0x02038280 */
+gObjPaletteBank4 = 0x02038280;
+
+/* Original address: 0x020382A0 */
+gObjPaletteBank5 = 0x020382A0;
+
+/* Original address: 0x020382C0 */
+gObjPaletteBank6 = 0x020382C0;
+
+/* Original address: 0x020382E0 */
+gObjPaletteBank7 = 0x020382E0;
+
+/* Original address: 0x02038300 */
+gObjPaletteBank8 = 0x02038300;
+
+/* Original address: 0x02038320 */
+gObjPaletteBank9 = 0x02038320;
+
+/* Original address: 0x02038340 */
+gObjPaletteBank10 = 0x02038340;
+
+/* Original address: 0x02038360 */
+gObjPaletteBank11 = 0x02038360;
+
+/* Original address: 0x02038380 */
+gObjPaletteBank12 = 0x02038380;
+
+/* Original address: 0x020383A0 */
+gObjPaletteBank13 = 0x020383A0;
+
+/* Original address: 0x020383C0 */
+gObjPaletteBank14 = 0x020383C0;
+
+/* Original address: 0x020383E0 */
+gObjPaletteBank15 = 0x020383E0;
+
+gInitialIsland = 0x0203B000;
+
+/* Fixed IWRAM objects recovered from the loader image. */
+gGameState = 0x03000020;
+gIntrTable = 0x03000890;
+gOamBuffer = 0x030008E0;
+gFontGlyphBlitterCode = 0x03000CE0;
+gIslandTransferData = 0x03000E40;
+gMsgGlyph = 0x03000E50;
+gTransWork = 0x03000E70;
+gMsgSprites = 0x03000EB0;
 
 
 SECTIONS {
@@ -10,15 +122,25 @@ SECTIONS {
     ALIGN(4)
     {
         asm/crt0.o(.text);
-        src/all.o(.text);
-        asm/all.o(.text);
+        src/main.o(.text);
+        src/interrupt.o(.text);
+        src/m_msg.o(.text);
+        src/init.o(.text);
+        src/m_font_draw.o(.text);
+        src/lib.o(.text);
+        src/audio.o(.text);
+        src/m_msg_util.o(.text);
+        src/game.o(.text);
+        src/joyboot.o(.text);
+        src/m_msg_sprite.o(.text);
+        asm/sdk.o(.text);
     } =0
 
-    .rodata :
-    ALIGN(4)
+    .rodata : ALIGN(4)
     {
-		src/all.o(.rodata);
 		data/data.o(.data);
+		src/m_msg_sprite.o(.rodata);
+		data/data.o(.data.assets);
     } =0
 
     . = 0x02040000; /* Limit EWRAM size */
