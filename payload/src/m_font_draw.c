@@ -139,3 +139,4 @@ void mFont_BlitGlyphToTiles(mFont_GlyphDraw_c *glyph, s32 width) {
         }
     }
 }
+
